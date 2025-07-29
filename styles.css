@@ -1,6 +1,9 @@
 :root{
     --pad: clamp(1rem,2cqi,2rem);
     --gap: clamp(1.5rem,2cqi,3rem);
+    --txt: rgb(40, 37, 37);
+    --txt-mut: rgb(94, 85, 85);
+    --cta-bg: rgb(120, 250, 155);
     --rad: 15px;
 }
 
@@ -11,18 +14,25 @@
     .card{
         width: 80cqw;
     }
+    .slide img{
+        height: 35cqh !important;
+        width: 84cqw !important;
+    }
 }
 body{
     width: 100vw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
+}
+
+/* Horizontal Slide Set-up*/
+
+.slide-wrapper{
     background-image: url('background.jpg');
     background-size:cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    z-index: -1;
-}
-.slide-wrapper{
     container-type: inline-size;
     container-name: Layout;
     min-width: 100vw;
@@ -31,6 +41,7 @@ body{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
 }
 .slide{
     scroll-snap-align: start;
@@ -43,11 +54,15 @@ body{
     align-items: center;    
     justify-content: space-around;
 }
+/* Slide Images*/
 .slide img{
     width: clamp(250px, 40cqi,45cqw);
     height: clamp(250px, 40cqi,55cqh);
     border-radius: var(--rad);
 }
+
+/* Slide Content - Text Card */
+
 .card{
     display: flex;
     flex-direction: column;
@@ -56,11 +71,32 @@ body{
     gap: var(--gap);
     backdrop-filter: blur(50px);
     border-radius: var(--rad);
+    max-width: 55cqw;
 }
-.cta-image{
+.card p, li{
+    color: var(--txt-mut);
+    font-size: clamp(0.8rem,1.5cqi,1.3rem);
+}
+.card h2{
+    color: var(--txt);
+    font-size: clamp(1.4rem,2cqi,2rem);
+}
+.card h2{
+    color: var(--txt);
+    font-size: clamp(1.1rem,2cqi,1.6rem);
+}
+.cta{
     text-align: center;
+    
 }
-.slide-5 img{
-    width: clamp(50px, 10cqi,10cqw);
-    height: clamp(25px, 5cqi,10cqh);
+.cta a{
+    text-decoration: none;
+    padding: 0.9rem;
+    background-color: var(--cta-bg) ;
+    border-radius: var(--rad);
+    color: var(--txt-mut);
+}
+.cta a:hover{
+    transform: scale(1.02);
+    box-shadow: 0 0 5px var(--cta-bg);
 }
