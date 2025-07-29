@@ -3,22 +3,39 @@
     --gap: clamp(1.5rem,2cqi,3rem);
     --rad: 15px;
 }
+
+@container Layout (max-width:768px){
+    .slide{
+        flex-direction: column-reverse !important;
+    }
+    .card{
+        width: 80cqw;
+    }
+}
 body{
     width: 100vw;
     margin: 0;
     background-image: url('background.jpg');
     background-size:cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    z-index: -1;
 }
 .slide-wrapper{
+    container-type: inline-size;
+    container-name: Layout;
     min-width: 100vw;
     width: max-content;
     overflow-x:auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    scroll-snap-type: x mandatory;
 }
 .slide{
+    scroll-snap-align: start;
     display: flex;
+    flex-shrink: 0;
     flex-direction: row;
     min-width: 100vw;
     gap:var(--gap);
@@ -27,8 +44,8 @@ body{
     justify-content: space-around;
 }
 .slide img{
-    width: clamp(200px, 40cqi,45cqw);
-    height: clamp(200px, 40cqi,55cqh);
+    width: clamp(250px, 40cqi,45cqw);
+    height: clamp(250px, 40cqi,55cqh);
     border-radius: var(--rad);
 }
 .card{
